@@ -1,0 +1,44 @@
+Lab 01, Task 02
+Submitted by Mehak Arya
+zID: z5259731
+
+------------------------------------------------------------------------------------------------------------------
+INPUT SIZE   |  INITIAL ORDER   |   DUPLICATES   |  NUM OF RUNS  |  AVG TIME FOR USEINTLIST  |  AVG TIME FOR SORT 
+------------------------------------------------------------------------------------------------------------------
+
+10,000          random              no                  5            0.2200s                    0.0040s                    
+10,000          sorted              no                  5            0.2240s                    0.0016s
+10,000          reverse             no                  5            0.0040s                    0.0024s
+10,000          random              yes                 5            0.2256s                    0.0048s
+10,000          sorted              yes                 5            0.2232s                    0.0040s
+10,000          reverse             yes                 5            0.0040s                    0.0040s
+
+20,000          random              no                  5            1.4528s                    0.0104s   
+20,000          sorted              no                  5            0.8872s                    0.0024s
+20,000          reverse             no                  5            0.0024s                    0.0048s        
+20,000          random              yes                 5            1.4776s                    0.0112s      
+20,000          sorted              yes                 5            0.8864s                    0.0048s
+20,000          reverse             yes                 5            0.0072s                    0.0048s
+
+50,000          random              no                  5           12.2970s                    0.0272s             
+50,000          sorted              no                  5            5.5216s                    0.0120s
+50,000          reverse             no                  5            0.0160s                    0.0144s
+50,000          random              yes                 5           12.5792s                    0.0296s              
+50,000          sorted              yes                 5            5.5144s                    0.0144s
+50,000          reverse             yes                 5            0.0120s                    0.0160s
+
+100,000         random              no                  5           54.5330s                    0.2736s               
+100,000         sorted              no                  5           21.9870s                    0.0256s
+100,000         reverse             no                  5            0.0280s                    0.3040s  
+100,000         random              yes                 5           54.0616s                    0.0616s
+100,000         sorted              yes                 5           22.021s                     0.0272s
+100,000         reverse             yes                 5            0.0280s                    0.0328s
+
+A pattern you may notice in the timing results is that the UseIntList program is very efficient and has a low average user time for inputs
+that are stored in reverse. This is likely because the logic I used in writing the sorting function requires moving through the linked list 
+until you are either at the end of the list, or have reached where you are required to insert. However, if the inputs are stored in reverse
+(from largest to smallest) then the program will not have to move through the entire linked list as each new node will be inserted as the new
+head of the list. This is likely why these inputs have a considerably smaller user time than for the other inputs.
+
+This same explanation can be used to explain why the inputs that are sorted (from smallest to largest) has a considerably larger user time than
+for the other inputs.

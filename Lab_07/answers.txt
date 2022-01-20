@@ -1,0 +1,75 @@
+
+NOTE:
+- Your time complexities should be expressed in big-O notation and be in
+  terms of n, where n is the number of people who  have  been  added  to
+  Friendbook.
+
+===============
+  FbIsFriend
+===============
+
+- Worst case time complexity: O(log(n))
+
+- Explanation:
+
+First, the function declares and initializes two integers, before accessing the friends array and
+returning TRUE/ FALSE. When doGets is called, it has time complexity of O(log(n)).
+
+These operations are sum to O(log(n)) so the worst case time complexity for the function is O(log(n)).
+
+===============
+FbMutualFriends
+===============
+
+- Worst case time complexity: O(n^2)
+
+- Explanation:
+
+First, the function declares and initializes a List by calling the ListNew function, which has a
+worst case time complexity of O(1).
+Then, it declares and initializes an integer which has a time complexity of O(1).
+Then, it uses a for loop that runs a total of N times. Inside this for loop, we assign a pointer
+to a string (O(1)), call the function FbIsFriend (O(1)) and call the function ListAppend - which uses 
+realloc (O(n)). And so, the complexity for this for loop inside becomes O(n^2).
+
+These operations sum to O(n^2) so the worst case time complexity for the function is O(n^2).
+
+===============
+ FbFriendRecs1
+===============
+
+- Worst case time complexity: O(n^2 * log(n)))
+
+- Explanation:
+
+First, the function declares and initializes an integer using NameToID which uses:
+1. MapContains which uses doContains which is O(log(n)).
+2. MapGet which uses doGet which is O(log(n))... and so this is O(log(n)).
+Then, it declares and initializes another integer and prints. This is O(1).
+Then, it uses a for loop that runs (n-2) times and inside this for loop, is another that runs n times. So,
+this operation runs n(n-2) times calling FbIsFriend (O(1)), FbMutualFriends (O(n^2)), ListSize (O(1)).
+Then it uses an if condition and prints a statement which are O(1). So, the complexity for the nested
+for loop is O(n^2 * log(n)).
+
+These operations sum to O(n^2 * log(n)) so the worst case time complexity for the function is O(n^2 * log(n)).
+
+===============
+ FbFriendRecs2
+===============
+
+- Worst case time complexity: O(n^2)
+
+- Explanation: 
+
+First, the function prints a statement. Then, it creates declares an array using calloc (O(1)).
+Then, it initializes the array using a for loop that runs n times (O(n)).
+Then, it calls NameToID (O(log(n))).
+Then, it calls QueueNew (O(1)).
+Then, it calls QueueEnqueue (O(1)).
+Then, it uses a while loop which calls QueueSize (O(1)) and runs whilst the Queue is not empty. In the worst case,
+we enqueue all n items and this loop runs n times. Inside the loop, we use QueueEnqueue and QueueDequeue (both (O(1))) 
+and have a for loop that runs n times. Then, the while loop is O(n^2).
+Then, we call QueueFree (O(1)) and free the array O(1).
+
+These operations sum to O(n^2) so the worst case time complexity for the function is O(n^2).
+
